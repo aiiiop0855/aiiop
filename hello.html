@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💌</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(180deg, #ffd6e7, #ffeef5);
+  overflow: hidden;
+}
+
+.screen {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.card {
+  background: white;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  animation: fadeIn 1s ease;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: 24px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.math {
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 14px 22px;
+  border: none;
+  border-radius: 999px;
+  background: #ff6fa3;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(255,111,163,0.4);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+.heart {
+  position: fixed;
+  top: -20px;
+  font-size: 18px;
+  animation: fall linear forwards;
+  opacity: 0.8;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px);} 
+  to { opacity: 1; transform: translateY(0);} 
+}
+</style>
+</head>
+
+<body>
+
+<div id="app" class="screen"></div>
+
+<script>
+const app = document.getElementById('app');
+
+function screenOne() {
+  app.innerHTML = `
+    <div class="card">
+      <h1>Привет 🌷</h1>
+      <p>Небольшая задачка перед валентинкой…</p>
+      <div class="math">Если x = улыбка, то x² = ?</div>
+      <button onclick="screenTwo()">Проверить ответ</button>
+    </div>
+  `;
+}
+
+function screenTwo() {
+  app.innerHTML = `
+    <div class="card">
+      <h1>Ответ:</h1>
+      <p>
+        x² = двойная радость ✨<br>
+        Особенно когда ты улыбаешься
+      </p>
+      <p style="margin-top:12px; font-size:14px; opacity:0.8;">
+        (это заметил человек,
+        который тоже понимает математику 📐)
+      </p>
+      <button onclick="screenThree()">Дальше</button>
+    </div>
+  `;
+}
+
+function screenThree() {
+  app.innerHTML = `
+    <div class="card">
+      <h1>Небольшой факт</h1>
+      <p>
+        У тебя необыкновенно красивые и милые глаза🌸 <br>
+      </p>
+      <div class="math">В общем ты очень милая и умная🌷</div>
+      <button onclick="screenFour()">Ещё</button>
+    </div>
+  `;
+}
+
+function screenFour() {
+  app.innerHTML = `
+    <div class="card">
+      <h1>Подсказка №2</h1>
+      <p>
+        Отправитель точно:
+      </p>
+      <div class="math">
+        любит математику,<br>
+        замечает твои глаза🌸<br> 
+      </div>
+      <p>
+      Может быть я Чонвон?😂
+      </p>
+      <button onclick="screenFive()">Финал</button>
+    </div>
+  `;
+}
+
+function screenFive() {
+  startHearts();
+  app.innerHTML = `
+    <div class="card">
+      <h1>С Днём Валентина 💌</h1>
+      <p>
+        Пусть рядом будут люди,<br>
+        с которыми даже сложные задачи
+        решаются легче 🌷
+        <br><br>
+        — твой математический друг📐
+      </p>
+    </div>
+  `;
+}
+
+function startHearts() {
+  setInterval(() => {
+    const h = document.createElement('div');
+    h.className = 'heart';
+    h.innerText = '💗';
+    h.style.left = Math.random() * 100 + 'vw';
+    h.style.animationDuration = (3 + Math.random() * 3) + 's';
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 6000);
+  }, 300);
+}
+
+screenOne();
+</script>
+
+</body>
+</html>
